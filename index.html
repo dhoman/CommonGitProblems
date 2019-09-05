@@ -116,6 +116,8 @@
         <section>
           <h2>Basic Git Commands</h2>
 <pre><code class="bash">
+  git init
+  # creates .git folder in your working directory
   git status
   # Show the working tree status
   git add {filename}
@@ -156,9 +158,21 @@
         </section>
         <section>
 <pre><code class="bash">
+git tag
+# lists all tags
+git tag -l "v1.9"
+# lists all tags starting with v1.9
+git tag -a {v1.9.2} {9fceb02}
+# adds tag v1.9.2 to commit starting with SHA 9fceb02
+# not always sent by default to remotes when doing git push
+# adding --tags will add them in a git push
+</code></pre>
+        </section>
+        <section>
+<pre><code class="bash">
   git cherry-pick {SHA}
 # apply the changes from SHA to the current active branch
-  git cherry-pick {SHA} {SHA} ...
+  git cherry-pick {SHA} {SHA} {SHA} {SHA}
 # cherry-pick multiple commits by separating each SHA with a space
 </code></pre>
           Cherry picking is the act of picking a commit from a branch and applying it to another 
@@ -276,6 +290,47 @@
 </code></pre>
         </section>
         <section>
+          <h2>Merge Conflics</h2>
+          How to avoid:
+          <ul>
+            <li>keep changes small</li>
+            <li>rebase / merge with master often</li>
+<pre><code class="bash">
+git checkout master
+git fetch
+git pull --rebase origin master
+git checkout -
+git rebase master
+</code></pre>
+          </ul>
+        </section>
+        <section>
+          <h2>Git Configs</h2>
+<pre><code class="bash">
+git mergetool --tool-help
+git config --global merge.tool {toolname}
+</code></pre>
+        </section>
+        <section>
+          <h2>Git Ignore, Git Attributes</h2>
+<pre><code class="bash">
+# .gitattributes
+* text eol=crlf
+*.eot binary
+</code></pre>
+<pre><code class="bash">
+# .gitignore
+/dist/
+*.dat
+node_modules
+.jest/*
+</code></pre>
+        </section>
+        <section>
+          <h2>Branching Strategy</h2>
+          <img src="images/releasebranching_release.png" />
+        </section>
+        <section>
           <h2>Other Topics</h2>
 <pre><code class="bash">
   git stash/git stash pop/git stash apply
@@ -285,6 +340,7 @@
   # before garbage collection deletes them permantely
 </code></pre>
         </section>
+        <!-- Tagging, Ideal branches (master, release branch etc) -->
         <section>
           <h2>More Info</h2>
           <ul>
