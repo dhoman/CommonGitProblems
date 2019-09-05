@@ -101,20 +101,65 @@
                 git uses first 2 chars to organize in directories
             </li>
             <li>display contents with: </li>
-            <pre><code>git cat-file -p _SHA_</code></pre>
+            <pre><code class="bash">git cat-file -p {SHA}</code></pre>
           </ul>
         </section>
         <section>
-          <h2>Git Commands</h2>
-          <pre><code>
+          <h2>Why is All this Important?</h2>
+          <p>Git is essentially a fancy content management system (CMS) for files...</p>
+          <p>...and understanding how it works helps make sense of what the commands do</p>
+        </section>
+        <section>
+          <h2>Your Local Repo Disected</h2>
+          <img src="images/gitAreas.png"/>
+          <p>3 trees: working directory, index (staging), and the repo</p>
+        </section>
+        <section>
+          <h2>Basic Git Commands</h2>
+          <pre><code class="bash">
             git status
+            # Show the working tree status
+            git add {filename}
+            # Add file contents to the index
+            git commit -m "{message}"
+            # Record changes to the repository
           </code></pre>
+        </section>
+        <section>
+          <h2>Git Branch Commands</h2>
+          <pre><code class="bash">
+            git branch {testbranch}
+            # creates a new branch called testbranch
+            git checkout {branchname}
+            # switches your working directory to the contents 
+            # of the latest commit on target branch
+            git checkout -b dhoman/11111_AC_product_typo_bugfix
+            # quicker way to create a new branch and immediately
+            # checkout the branch
+            git branch -d {branchname}
+            # delete the branch
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="bash">
+            git cherry-pick {SHA}
+            git cherry-pick {SHA} {SHA} ...
+          </code></pre>
+          Cherry picking is the act of picking a commit from a branch and applying it to another 
+        </section>
+        <section>
+          <img src="images/featureBranch.PNG">
+          <pre><code class="bash">
+            git checkout master
+            git cherry-pick f
+          </code></pre>
+        </section>
+        <section>
+          <img src="images/featureBranch2.PNG">
         </section>
 				<section>
           <h2>Commands</h2>
           <ul>
-            <li>git status, show</li>
-            <li>git cherry-pick</li>
             <li>git reset</li>
             <li>git rebase</li>
             <li>git reflog</li>
