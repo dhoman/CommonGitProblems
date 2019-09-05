@@ -25,8 +25,113 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h2>Git Stuff</h2>
+        </section>
+				<section>
+          <ul>
+            <li>How it Works</li>
+            <li>Command Basics</li>
+            <li>Advanced Things</li>
+          </ul>
+        </section>
+				<section>
+          <h2>How it Works</h2>
+        </section>
+        <section>
+          <h2>Traditional VCS</h2>
+          <img src="images/traditionalVCS.png">
+          <p>stores base file and each new version of file is calculated from base + deltas</p>
+        </section>
+        <section>
+          <h2>Git</h2>
+          <img src="images/gitFiles.png">
+          <p>each version of file is stored, and commits point to a tree of files and hashes</p>
+        </section>
+        <section>
+          <h2>Git Internals pt1</h2>
+          <ul>
+            <li>Object Types</li>
+            <ul>
+              <li>Commit - author, message, pointer to a tree of changes</li>
+              <li>Tree - pointer(s) to file names, content, other trees</li>
+              <li>Blob - data</li>
+            </ul>
+            <li>Stored as files on your filesystem (ie .git folder)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Git Internals pt2</h2>
+          <ul>
+            <li>Tags and Branches</li>
+            <ul>
+              <li>Pointers to commits</li>
+              <li>Not full copies</li>
+              <li>Allows a naming commits</li>
+              <ul>
+                <li>additional meta information</li>
+              </ul>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Git is a Giant Graph</h2>
+          <ul>
+            <li>Directed Acyclic Graph</li>
+            <ul><li>No Loops / Cycles</li></ul>
+            <li>Commits all reference their parent</li>
+            <li>Branches are simply named pointers to commits</li>
+            <li>HEAD: special pointer to the latest commit</li>
+            <ul>
+              <li>Moves automatically, on your current active branch</li>
+            </ul>
+          </ul>
+        </section>
+        <!--8:23-->
+        <section>
+          <ul>
+            <li>
+                Object files: each object file has a 40-char sha1 hash as its filename
+                unique, used extensively as unique reference.
+            </li>
+            <li>
+                can use first several chars in git commands as shortcut (just needs to be unique)
+            </li>
+            <li>
+                git uses first 2 chars to organize in directories
+            </li>
+            <li>display contents with: </li>
+            <pre><code>git cat-file -p _SHA_</code></pre>
+          </ul>
+        </section>
+        <section>
+          <h2>Git Commands</h2>
+          <pre><code>
+            git status
+          </code></pre>
+        </section>
+				<section>
+          <h2>Commands</h2>
+          <ul>
+            <li>git status, show</li>
+            <li>git cherry-pick</li>
+            <li>git reset</li>
+            <li>git rebase</li>
+            <li>git reflog</li>
+            <li>git squash / splitting</li>
+            <li>git bisect</li>
+          </ul>
+        </section>
+        <section>
+          <h2>More Info</h2>
+          <ul>
+            <li><a href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
+            <li><a href="https://git-scm.com/book">https://git-scm.com/book</a></li>
+            <li><a href="https://github.com/pluralsight/git-internals-pdf">https://github.com/pluralsight/git-internals-pdf</a></li>
+            <li><a href="http://rogerdudler.github.io/git-guide">http://rogerdudler.github.io/git-guide</a></li>
+            <li><a href="http://matthew-brett.github.io/curious-git/index.html">http://matthew-brett.github.io/curious-git/index.html</a></li>
+          </ul>
+        </section>
 			</div>
 		</div>
 
