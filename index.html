@@ -184,7 +184,7 @@
         </section>
         <section>
           <h2>Oops pt2</h2>
-          Messed up locally and commited it
+          Messed up locally and commited it (locally)
 <pre><code class="bash">
   git reset HEAD~2
   # undo last two commits, keep changes
@@ -240,11 +240,49 @@
         </section>
         <section>
           <h2>Forgot Something Advanced: Rebase</h2>
+          <p>Rebasing is the process of moving or combining a sequence of commits to a new base commit</p>
+          <p>Note: don't do this for things already pushed remotely</p>
 <pre><code class="bash">
-  git rebase
-  # can also be used to add forgotten files
-  git add newFile.txt
-  git commit --amend
+  git rebase HEAD~3 -i
+</code></pre>
+        </section>
+        <section>
+          <h2>Undoing Commited Things</h2>
+          <p>For changes that have hit remotes</p>
+<pre><code class="bash">
+  git revert {SHA}
+  # adds a commit that undoes the changes from SHA
+  git revert HEAD~4..HEAD~2
+  # can be used to undo entire ranges of commits
+</code></pre>
+        </section>
+        <section>
+          <h2>Finding Issues</h2>
+<pre><code class="bash">
+  git bisect
+  git bisect bad
+  git bisect good {revision}
+  # marks last good revision as revision
+  # after which, git will checkout random commit inbetween
+  git bisect bad
+  # and repeat process of running tests, and responding
+  # git bisect good, or git bisect bad
+</code></pre>
+        </section>
+        <section>
+          <h2>Finding Blame</h2>
+<pre><code class="bash">
+  git blame filename
+</code></pre>
+        </section>
+        <section>
+          <h2>Other Topics</h2>
+<pre><code class="bash">
+  git stash/git stash pop/git stash apply
+  # way to store and reapply changes quickly, or repeat changes to multiple branches
+  git reflog
+  # way to recover "lost" commits that got removed via rebases or what have you
+  # before garbage collection deletes them permantely
 </code></pre>
         </section>
         <section>
