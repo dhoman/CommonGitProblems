@@ -331,6 +331,64 @@ node_modules
           <img src="images/releasebranching_release.png" />
         </section>
         <section>
+          <h2>Typical Release Workflow</h2>
+          <ul>
+            <li>Dev work on master</li>
+            <li>Separate release branch(s)</li>
+            <li>release merges master when everything is ready for major releases</li>
+            <li>builds from release branch(s), should tag each deployment ie. 'git tags v1.9.x'</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Typical Hotfix Workflow</h2>
+          <ol>
+            <li>Checkout release code with issue</li>
+            <li>Fix issue in a new branch</li>
+            <li>Pull Request fix back into release branch</li>
+            <li>Create a branch off of master</li>
+            <li>Cherry pick the fix commits into this branch off master</li>
+            <li>Pull Request fix back into master</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Typical Hotfix Workflow Commands pt1</h2>
+          <ol>
+            <li>Checkout release code with issue
+<pre><code class="bash">
+git checkout {tag} (ie git checkout v1.9.x)
+</code></pre>
+            </li>
+            <li>Fix issue in a new branch</li>
+<pre><code class="bash">
+git checkout -b dhoman/hotfix_1.9.x_sample_issue
+git commit -m "AC: #666 fixed the site from blowing up because of linter errors"
+</code></pre>
+            <li>Pull Request fix back into release branch</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Typical Hotfix Workflow Commands pt2</h2>
+          <p>Appling the fix back to master</p>
+          <ol>
+            <li>Create a branch off of master
+<pre><code class="bash">
+git checkout master
+git checkout -b dhoman/hotfix_1.9.x_cherry-pick_master
+</code></pre>
+            </li>
+            <li>Cherry pick the fix commits into this branch     
+<pre><code class="bash">
+git cherry-pick {SHA} #SHA is the SHA for commits from hotfix branch
+</code></pre>
+            </li>
+            <li>Pull Request fix back into master</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Branching Strategy</h2>
+          <img src="images/releasebranching_release.png" />
+        </section>
+        <section>
           <h2>Other Topics</h2>
 <pre><code class="bash">
   git stash/git stash pop/git stash apply
